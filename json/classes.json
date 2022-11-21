@@ -1,0 +1,155 @@
+{
+  "monday": {
+    "0": {
+      "address": "26 Richmond St, Glasgow G1 1XH",
+      "assigned": ["ayushi", "cameron"],
+      "buildingCode": "LT1301",
+      "classCode": "CS313",
+      "coordinates": {
+        "longitude": 55.861276706043206,
+        "latitude": -4.243583645522161
+      },
+      "description": "Code: 2876# - Ayushi: Muir 05; Cameron: Muri 07",
+      "lecturer": null,
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15896",
+      "time": "10:00 - 11:00",
+      "title": "Computer Systems and Concurrency",
+      "type": "lab"
+    },
+    "1": {
+      "address": "26 Richmond St, Glasgow G1 1XH",
+      "assigned": null,
+      "buildingCode": "LT1201 & LT1221",
+      "classCode": "CS316",
+      "coordinates": {
+        "longitude": 55.861276706043206,
+        "latitude": -4.243583645522161
+      },
+      "description": "Code: 2876# - These labs are OPTIONAL, they must be BOOKED",
+      "lecturer": null,
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15897",
+      "time": "14:00 - 16:00",
+      "title": "Functional Programming",
+      "type": "lab"
+    }
+  },
+  "tuesday": {
+    "0": {
+      "address": "16 Richmond St, Glasgow G1 1XQ",
+      "assigned": ["ayushi", "callum", "cameron"],
+      "buildingCode": "MC301",
+      "classCode": "CS316",
+      "coordinates": null,
+      "description": null,
+      "lecturer": "Robert Atkey",
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15897",
+      "time": "11:00 - 12:00",
+      "title": "Functional Programming",
+      "type": "lecture"
+    },
+    "1": {
+      "address": "26 Richmond St, Glasgow G1 1XH",
+      "assigned": null,
+      "buildingCode": "LT1201 & LT1221",
+      "classCode": "CS316",
+      "coordinates": {
+        "longitude": 55.861276706043206,
+        "latitude": -4.243583645522161
+      },
+      "description": "Code: 2876# - These labs are OPTIONAL, they must be BOOKED",
+      "lecturer": null,
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15897",
+      "time": "14:00 - 16:00",
+      "title": "Functional Programming",
+      "type": "lab"
+    }
+  },
+  "wednesday": {
+    "0": {
+      "address": "26 Richmond St, Glasgow G1 1XH",
+      "assigned": null,
+      "buildingCode": "LT1320 & 1301",
+      "classCode": "CS312",
+      "coordinates": {
+        "longitude": 55.861276706043206,
+        "latitude": -4.243583645522161
+      },
+      "description": "Code: 2876# - These labs are OPTIONAL",
+      "lecturer": null,
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15895",
+      "time": "09:00 - 11:00",
+      "title": "Web Applications Development",
+      "type": "lab"
+    },
+    "1": {
+      "address": "107 Rottenrow E, Glasgow G4 0NG",
+      "assigned": ["ayushi", "callum", "cameron"],
+      "buildingCode": "JA314",
+      "classCode": "CS313",
+      "coordinates": null,
+      "description": null,
+      "lecturer": "Anil Fernando",
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15896",
+      "time": "13:00 - 14:00",
+      "title": "Computer Systems and Concurrency",
+      "type": "lecture"
+    }
+  },
+  "friday": {
+    "0": {
+      "address": "107 Rottenrow E, Glasgow G4 0NG",
+      "assigned": ["ayushi", "callum", "cameron"],
+      "buildingCode": "JA314",
+      "classCode": "CS316",
+      "coordinates": null,
+      "description": null,
+      "lecturer": "Robert Atkey",
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15897",
+      "time": "11:00 - 12:00",
+      "title": "Functional Programming",
+      "type": "lecture"
+    },
+    "1": {
+      "address": "26 Richmond St, Glasgow G1 1XH",
+      "assigned": ["callum"],
+      "buildingCode": "LT1320",
+      "classCode": "CS313",
+      "coordinates": {
+        "longitude": 55.861276706043206,
+        "latitude": -4.243583645522161
+      },
+      "description": "Code: 2876# - Callum: Telford 16",
+      "lecturer": null,
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15896",
+      "time": "12:00 - 13:00",
+      "title": "Computer Systems and Concurrency",
+      "type": "lab"
+    },
+    "2": {
+      "address": "204 George St, Glasgow G1 1XW",
+      "assigned": ["ayushi", "callum", "cameron"],
+      "buildingCode": "RC641",
+      "classCode": "CS313",
+      "coordinates": null,
+      "description": null,
+      "lecturer": "Anil Fernando",
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15896",
+      "time": "13:00 - 14:00",
+      "title": "Computer Systems and Concurrency",
+      "type": "lecture"
+    },
+    "3": {
+      "address": "107 Rottenrow E, Glasgow G4 0NG",
+      "assigned": ["ayushi", "callum", "cameron"],
+      "buildingCode": "JA317",
+      "classCode": "CS312",
+      "coordinates": null,
+      "description": null,
+      "lecturer": "Mark Dulop",
+      "myplaceLink": "https://classes.myplace.strath.ac.uk/course/view.php?id=15895",
+      "time": "15:00 - 17:00",
+      "title": "Web Applications Development",
+      "type": "lecture"
+    }
+  }
+}

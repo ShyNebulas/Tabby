@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="Timetabling app">
+    <meta name="author" content="cameron">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no, user-scalable=no">
+    <!--Tab Icon-->
+    <link href="{{url_for('static', filename='assets/favicon.jpg')}}" rel="shortcut icon" type="image/jpg">
+    <!--Stylesheets-->
+    <link href="{{url_for('static', filename='stylesheets/badge.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/dot.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/footer.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/hover-min.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/map.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/mediaquery.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/navigation.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/style.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/themes/silver.css')}}" rel="stylesheet">
+    <link href="{{url_for('static', filename='stylesheets/themes/twilight.css')}}" rel="stylesheet">
+    <!--Bootstrap-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.1/font/bootstrap-icons.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <!--Javascript-->
+    <script>
+      const images = {
+        default: '{{url_for("static", filename="assets/default-logo.png")}}',
+        twilight: '{{url_for("static", filename="assets/twilight-logo.png")}}'
+      };
+    </script>
+    <script src="{{url_for('static', filename='js/theme.js')}}"></script>
+    <script src="{{url_for('static', filename='js/main.js')}}"></script>
+    <script src="{{url_for('static', filename='js/map-styles.js')}}"></script>
+  </head>
+  <body id = "body" onload = "rememberTheme(), addStar(), highlightEvent();">
+    <!--
+    <div id="settings" class="modal fade" tabindex="-1">
+      <div class="modal-dialog modal-lg">
+        <div class="modal-content">  
+          <div class="modal-header">
+            <h5 class = "modal-title">Settings</h5>
+          </div>
+          <div class="modal-body">
+            <div class="row align-items-start" style="margin: 0 !important">
+              <div class="col" style="padding: 0 !important">
+                <div style = "margin: 12px 0 12px 12px" class="dropdown">
+                  <button id="button-dropdown" class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown">Theme</button>
+                  <ul class="dropdown-menu">
+                    <li><a class="dropdown-item" onclick="setTheme('default');">Default</a></li>
+                    <li><a class="dropdown-item" onclick="setTheme('twilight');">Twilight</a></li>
+                  </ul>
+                </div>
+              </div>
+              <div class="col" style="padding: 0 !important">
+              </div>
+            </div>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn" data-bs-dismiss="modal">Close</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    -->
+    {% for day in classes %}
+      {% for module in classes[day] %}
+        <div id="{{'{}-{}-modal'.format(day, module)}}" class="modal fade" tabindex="-1">
+          <div class="modal-dialog modal-lg">
+            <div class="modal-content">  
+              <div class="modal-header">
+                {% if classes[day][module].lecturer %}
+                  <h5 class="modal-title">{{classes[day][module].title}} with {{classes[day][module].lecturer}}</h5>
+                {% else %}
+                  <h5 class="modal-title">{{classes[day][module].title}}</h5>
+                {% endif %}
+              </div>
+              <div class="modal-body">
+                <div class="row align-items-start" style="margin: 0 !important">
+                  <div class="col" style="padding: 0 !important">
+                    <div id="{{'{}-{}-map'.format(day, module)}}" class="map map-mobile"></div>
+                  </div>
+                  <div class="col" style="padding: 0 !important">
+                    <ul class="list-group list-group-flush">
+                      {% if classes[day][module].classCode %}
+                        <li class="list-group-item">🎒 <span class="text-muted">{{classes[day][module].classCode}}</span></li>
+                      {% endif %}
+                      <li class="list-group-item">⏰ <span class="text-muted">{{classes[day][module].time}}</span></li>
+                      <li class="list-group-item">🧑‍🏫 <span class="text-muted">{{classes[day][module].type.title()}}</span></li>
+                      <li class="list-group-item">🏢 <span class="text-muted">{{classes[day][module].address}}</span></li>
+                      <li class="list-group-item">📁 <span class="text-muted">{{classes[day][module].buildingCode}}</span></li>
+                      {% if classes[day][module].assigned %}
+                        {% if classes[day][module].assigned|length == 1 %}
+                          <li class="list-group-item">🧑‍🤝‍🧑 <span>{{classes[day][module].assigned[0].title()}}</span></li>
+                        {% elif classes[day][module].assigned|length == 2 %}
+                          <li class="list-group-item">🧑‍🤝‍🧑 <span>{{classes[day][module].assigned[0].title()}} & {{classes[day][module].assigned[1].title()}}</span></li>
+                        {% else %}
+                          <li class="list-group-item">🧑‍🤝‍🧑 <span>{{classes[day][module].assigned[0].title()}}, {{classes[day][module].assigned[1].title()}} & {{classes[day][module].assigned[2].title()}}</span></li>
+                        {% endif %}
+                      {% endif %}
+                      {% if classes[day][module].description %}
+                        <li class="list-group-item">🔎 <span class="text-muted">{{classes[day][module].description}}</span></li>
+                      {% endif %}
+                   </ul>
+                  </div>
+                </div>
+                <div class="modal-footer">
+                  {% if classes[day][module].myplaceLink %}
+                    <button class="btn button-myplace" onclick="window.location.href='{{classes[day][module].myplaceLink}}';" type="button">View on MyPlace</button>
+                  {% endif %}
+                  <button class="btn button-close" type="button" data-bs-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    {% endfor %}
+    <div id="container">
+      <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container-fluid">
+          <a href="/">
+            <img id="logo" class="hvr-buzz-out" src="{{url_for('static', filename='assets/default-logo.png')}}">
+          </a>
+           <a class="desktop-remove" onclick="toggle('twilight');">
+              <i class="bi bi-moon footer-icons"></i>
+            </a>
+          <div id="navigation-blockquote" class="float-right mobile-remove">
+            <figure class="nav-item">
+              <blockquote class="blockquote">
+                <p>{{quote['quote']}}</p>
+              </blockquote>
+              <figcaption class="blockquote-footer float-right">
+                <a id="quote-author" href={{quote['link']}} target="_blank" rel="noopener noreferrer">{{quote['author']}}</a>
+              </figcaption>              
+            </figure>
+          </div>
+        </div>
+      </nav>
+      <div class="table-responsive">
+        <table class="table">
+          <thead>
+            <tr>
+              {% for day in classes %}
+                <th id="day-{{day}}" class="table-heading">{{day.title()}}</th>
+              {% endfor %}
+            </tr>
+          </thead>
+          <tbody>
+            {% for day in classes %}
+              <td id="{{day}}" class="table-body">
+                {% for module in classes[day] %}
+                  <div class="hvr-float card container-fluid" data-bs-target="#{{day}}-{{module}}-modal" data-bs-toggle="modal">
+                    <div class="card-body">
+                      {% if classes[day][module].assigned %}
+                        {% if classes[day][module].assigned|length == 1 %}
+                          <span class="dot dot-{{classes[day][module].assigned[0]}} float-right"></span>
+                        {% elif classes[day][module].assigned|length == 2 %}
+                          <span class="dot dot-{{classes[day][module].assigned[0]}} float-right"></span>
+                          <span style="margin-right: -5px;" class="dot dot-{{classes[day][module].assigned[1]}} float-right"></span>
+                        {% else %}
+                          <span class="dot dot-{{classes[day][module].assigned[0]}} float-right mobile-remove"></span>
+                          <span style="margin-right: -5px;" class="dot dot-{{classes[day][module].assigned[1]}} float-right mobile-remove"></span>
+                          <span style="margin-right: 3px;" class="dot dot-{{classes[day][module].assigned[2]}} float-right mobile-remove"></span>
+                          <span class="dot dot-everyone float-right desktop-remove"></span>
+                        {% endif %}
+                      {% endif %}
+                      <h5 class="card-title">{{classes[day][module].title}}</h5>
+                      <h6 class="card-subtitle mb-2 text-muted">{{classes[day][module].buildingCode}}</h6>
+                      <span class="badge badge-pill badge-{{classes[day][module].type}}">{{classes[day][module].type.title()}}</span>
+                      <span class="badge badge-pill badge-dark">{{classes[day][module].time}}</span>
+                    </div>
+                  </div>
+                {% endfor %}
+              </td>
+            {% endfor %}
+          </tbody>
+        </table>
+      </div>
+      <div class="container mobile-remove">
+        <footer class="d-flex flex-wrap justify-content-between align-items-center py-3 my-4">
+          <div class="col-md-4 d-flex align-items-center">
+            <a class="mb-3 me-2 mb-md-0 text-decoration-none lh-1">
+              <a href="https://github.com/ShyNebulas" target="_blank" rel="noopener noreferrer">
+                <i class="bi bi-github footer-icons"></i>
+              </a>
+            </a>
+          </div>
+          <h5 class="nav-item">{{date}}</h5>
+          <ul class="nav col-md-4 justify-content-end list-unstyled d-flex">
+            <li class="ms-3">
+              <a onclick="toggle('twilight');">
+                <i class="bi bi-moon footer-icons"></i>
+              </a>
+            </li>
+          </ul>
+        </footer>    
+      </div>
+    </div>  
+  </body>
+  <script>
+    function initMap() {
+      {% for day in classes %}
+        {% for module in classes[day] %}
+          maps.push(new google.maps.Map(document.getElementById('{{"{}-{}-map".format(day, module)}}'), {
+            center: {lat: {{addresses["{}-{}".format(day, module)]['latitude']}}, lng: {{addresses["{}-{}".format(day, module)]['longitude']}}},
+            disableDefaultUI: true,
+            zoomControl: true,
+            fullscreenControl: true,
+            zoom: 18,
+            styles: styles["default"]
+          }));
+          markers.push(new google.maps.Marker({
+            position: {lat: {{addresses["{}-{}".format(day, module)]['latitude']}}, lng: {{addresses["{}-{}".format(day, module)]['longitude']}}},
+            map: maps[maps.length - 1]
+          }));
+        {% endfor %}
+      {% endfor %}
+    }
+  </script>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCy3PqXKbJ5tC-sqsa9Z7wQIBaq7tWbdEI&callback=initMap" async defer></script>
+</html>

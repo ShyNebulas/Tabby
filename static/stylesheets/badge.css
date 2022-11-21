@@ -1,0 +1,17 @@
+:root {
+  --lab: #FBB13C;
+  --lecture: #4B7BF5;
+  --tutorial: #F7567C;
+  --marking: #52b788;
+  --group-work: #C197D2;
+  --test-exam: #e43d40;
+}
+
+.badge-pill {color: white !important;}
+.badge-lecture {background-color: var(--lecture) !important;}
+.badge-tutorial {background-color: var(--tutorial) !important;}
+.badge-lab {background-color: var(--lab) !important;}
+.badge-marking {background-color: var(--marking) !important;}
+.badge-group-work {background-color: var(--group-work) !important;}
+.badge-test-exam {background-color: var(--test-exam) !important;}
+

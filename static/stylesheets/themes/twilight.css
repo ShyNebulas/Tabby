@@ -1,0 +1,22 @@
+:root {
+  --twilight-background: #242f3e;
+  --twilight-foreground: #38414e;
+  --twilight-title: #d59563;
+  --twilight-subtitle: #746855;
+}
+
+.twilight-body {background-color: var(--twilight-background);}
+.twilight-h5, .twilight-p, .twilight-th, .twilight-badge-lecture {color: var(--twilight-title);}
+.twilight-h6, .twilight-i, .twilight-i:hover, .twilight-list-group-item-text, .twilight-quote-author, .twilight-quote-author:hover {color: var(--twilight-subtitle);}
+.twilight-card, .twilight-modal-content, .twilight-list-group-item {background-color: var(--twilight-foreground) !important;}
+.twilight-table, .twilight-th, .twilight-footer, .twilight-list-group-item, .twilight-modal-header, .twilight-modal-footer {border-color: var(--twilight-subtitle) !important;}
+.twilight-button-myplace, .twilight-badge-lecture, .twilight-button-dropdown, .twilight-dropdown-item { background-color: var(--twilight-subtitle) !important;}
+.twilight-button-close {background-color: var(--twilight-title);}
+
+
+
+
+
+
+
+

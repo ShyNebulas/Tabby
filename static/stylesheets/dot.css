@@ -1,0 +1,20 @@
+:root {
+  --ayushi: #967BB6;
+  --callum: #EC0B43;
+  --cameron: #FFBC42;
+  --everyone: #FFC8DD
+}
+
+.dot {
+  height: 1rem;
+  width: 1rem;
+  border-radius: 50%;
+  margin-right: -24px;
+  margin-top: -10px;
+}
+
+.dot-ayushi {background-color: var(--ayushi);}
+.dot-callum {background-color: var(--callum);}
+.dot-cameron {background-color: var(--cameron);}
+.dot-everyone {background-color: var(--everyone);}
+

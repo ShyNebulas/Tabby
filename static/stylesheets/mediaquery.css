@@ -1,0 +1,11 @@
+@media(max-width: 767px) {
+  .mobile-remove {display: none !important;}
+  .map-mobile {
+    width: 23.25rem !important;
+    height: 23.25rem !important;
+  }
+}
+
+@media(min-width: 767px) {
+  .desktop-remove {display: none !important;}
+}

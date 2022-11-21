@@ -1,0 +1,48 @@
+:root {
+  --silver-background: #f5f5f5;
+  --silver-foreground: #ffffff;
+  --silver-title: #bdbdbd;
+  --silver-subtitle: #dadada;
+}
+
+.silver-body, .silver-h5, .silver-h6, .silver-th, .silver-card, 
+.silver-i, .silver-table, .silver-footer, .silver-modal-content, .silver-modal-header, 
+.silver-modal-footer, .silver-list-group-item, .silver-list-group-item-text, .button-myplace, .button-close {
+  transition: .4s;
+}
+
+.silver-body {
+  background-color: var(--silver-background);
+}
+
+.silver-h5, .silver-p, .silver-th {
+  color: var(--silver-title); 
+}
+
+.silver-h6, .silver-i, .silver-list-group-item-text {
+  color: var(--silver-subtitle); 
+}
+
+.silver-card, .silver-modal-content, .silver-list-group-item {
+  background-color: var(--silver-foreground) !important;
+}
+
+.silver-table, .silver-th, .silver-footer, .silver-list-group-item, .silver-modal-header, .silver-modal-footer {
+  border-color: var(--silver-subtitle) !important;
+}
+
+.silver-button-myplace {
+  background-color: var(--silver-subtitle);
+}
+
+.silver-button-close {
+  background-color: var(--silver-title);
+}
+
+
+
+
+
+
+
+
